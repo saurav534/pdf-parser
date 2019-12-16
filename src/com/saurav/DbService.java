@@ -9,11 +9,18 @@ import java.util.List;
 class DbService {
     private static Connection conn = null;
     static {
-        String dbUrl = "jdbc:mysql://localhost/pdf_reader?useSSL=false";
+        createConnection();
+    }
+
+    public static boolean createConnection() {
+        String dbUrl = "jdbc:mysql://" + ConfigDb.getValue("mysqlHost") + "/" + ConfigDb.getValue("database") + "?useSSL=false";
         try {
-            conn = DriverManager.getConnection(dbUrl, "root", "root");
-        } catch (SQLException e) {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(dbUrl, ConfigDb.getValue("userName"), ConfigDb.getValue("password"));
+            return true;
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
