@@ -1,3 +1,6 @@
 Manifest-Version: 1.0
 Main-Class: com.saurav.PdfReader
+Class-Path: lib/derby.jar lib/pdfbox-2.0.3.jar lib/fontbox-2.0.3.jar lib
+ /bcprov-jdk15on-1.60.jar lib/commons-logging-1.2.jar lib/mysql-connecto
+ r-java-5.1.48.jar
 
